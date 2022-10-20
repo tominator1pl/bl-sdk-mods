@@ -11,7 +11,7 @@
       "source": "https://github.com/tominator1pl/bl-sdk-mods",
       "latest": "1.0.0",
       "versions": {
-        "1.0.0": "[Version Link]"
+        "1.0.0": "https://github.com/tominator1pl/bl-sdk-mods/raw/main/AutoPickup/AutoPickup.zip"
       },
       "license": "MIT"
     }
