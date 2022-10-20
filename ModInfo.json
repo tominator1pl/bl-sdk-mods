@@ -1,0 +1,19 @@
+{
+  "mods": [
+    {
+      "name": "AutoPickup",
+      "authors": "Tominator",
+      "description": "Automaticly pickups consumable items, such as Ammo, Health, Eridium. It's an attempt to automaticly pickup items from chest after opening, BL3 style. Side effect is that it tries to pickup from the ground also.",
+      "tagline": "Automaticly pickups consumable items",
+      "types": ["Utility"],
+      "supports": ["BL2", "TPS"],
+      "issues": "https://github.com/tominator1pl/bl-sdk-mods/issues",
+      "source": "https://github.com/tominator1pl/bl-sdk-mods",
+      "latest": "1.0.0",
+      "versions": {
+        "1.0.0": "[Version Link]"
+      },
+      "license": "MIT"
+    }
+  ]
+}
