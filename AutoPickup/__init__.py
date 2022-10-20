@@ -5,7 +5,7 @@ from Mods import ModMenu
 class MyMod(ModMenu.SDKMod):
     Name: str = "AutoPickup"
     Author: str = "Tominator"
-    Description: str = "Automaticly Pickups Consumable Items"
+    Description: str = "Automatically Pickups Consumable Items"
     Version: str = "1.0.0"
     SupportedGames: ModMenu.Game = ModMenu.Game.BL2 | ModMenu.Game.TPS  # Either BL2 or TPS; bitwise OR'd together
     Types: ModMenu.ModTypes = ModMenu.ModTypes.Utility  # One of Utility, Content, Gameplay, Library; bitwise OR'd together
