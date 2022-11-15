@@ -19,8 +19,8 @@
       "name": "PickupAsTrash",
       "authors": "Tominator",
       "description": [
-		"Adds an option to pickup items from the ground as trash \n",
-		"You can use yor Secondary Use (default Q) on item on the ground to pick it up. Such items will be automatically marked as trash, so you can sell it at vendor faster.\n",
+		"Adds an option to pickup items from the ground as trash.\n",
+		"You can use your Secondary Use (default Q) on item on the ground to pick it up. Such items will be automatically marked as trash, so you can sell it at a vendor faster.\n",
 		"There is a built-in setting to disable the tooltip."
 	  ],
       "tagline": "Adds an option to pickup items from the ground as trash",
