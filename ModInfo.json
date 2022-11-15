@@ -32,6 +32,10 @@
       "versions": {
         "1.0.0": "https://github.com/tominator1pl/bl-sdk-mods/raw/main/PickupAsTrash/PickupAsTrash.zip"
       },
+	  "requirements": {
+        "Enums": ">=1.0",
+		"Structs": ">=1.0"
+      },
       "license": "MIT"
     }
   ]
