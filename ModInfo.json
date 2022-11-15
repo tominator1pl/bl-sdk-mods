@@ -14,6 +14,25 @@
         "1.0.0": "https://github.com/tominator1pl/bl-sdk-mods/raw/main/AutoPickup/AutoPickup.zip"
       },
       "license": "MIT"
+    },
+	{
+      "name": "PickupAsTrash",
+      "authors": "Tominator",
+      "description": [
+		"Adds an option to pickup items from the ground as trash \n",
+		"You can use yor Secondary Use (default Q) on item on the ground to pick it up. Such items will be automatically marked as trash, so you can sell it at vendor faster.\n",
+		"There is a built-in setting to disable the tooltip."
+	  ],
+      "tagline": "Adds an option to pickup items from the ground as trash",
+      "types": ["Utility"],
+      "supports": ["BL2", "TPS"],
+      "issues": "https://github.com/tominator1pl/bl-sdk-mods/issues",
+      "source": "https://github.com/tominator1pl/bl-sdk-mods",
+      "latest": "1.0.0",
+      "versions": {
+        "1.0.0": "https://github.com/tominator1pl/bl-sdk-mods/raw/main/PickupAsTrash/PickupAsTrash.zip"
+      },
+      "license": "MIT"
     }
   ]
 }
