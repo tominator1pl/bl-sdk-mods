@@ -12,7 +12,7 @@ class MyMod(ModMenu.SDKMod):
     SaveEnabledState: ModMenu.EnabledSaveType = ModMenu.EnabledSaveType.LoadOnMainMenu
     
     Pickinup = False
-    pickups = ["Ammo", "Shells", "Cash", "Eridium", "Grenade", "Health", "Seraph"] #Item names to pickup
+    pickups = ["Ammo", "Shells", "Cash", "Eridium", "Grenade", "Health", "Seraph", "Moonstone", "Laser", "Cells"] #Item names to pickup
     
     def Enable(self) -> None:
         super().Enable()
