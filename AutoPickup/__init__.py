@@ -12,7 +12,7 @@ class MyMod(ModMenu.SDKMod):
     SaveEnabledState: ModMenu.EnabledSaveType = ModMenu.EnabledSaveType.LoadOnMainMenu
     
     Pickinup = False
-    pickups = ["Ammo", "Shells", "Cash", "Eridium", "Grenade", "Health", "Seraph", "Moonstone", "Laser", "Cells"] #Item names to pickup
+    pickups = ["GD_Ammodrops.Pickups", "GD_Ammodrops.Pickups_BossOnly", "GD_Currency.A_Item", "GD_BuffDrinks.A_Item"] #Item full definition names to pickup
     
     def Enable(self) -> None:
         super().Enable()
@@ -32,7 +32,8 @@ class MyMod(ModMenu.SDKMod):
             if pickup.Inventory.Class == unrealsdk.FindClass("WillowUsableItem"):
                 distance = self.dist(pickup.Location, caller.CalcViewActorLocation)
                 if distance <= maxDist: #Check if item is within Player pickup range
-                    if any(ele in pickup.Inventory.ItemName for ele in self.pickups):
+                    defName = pickup.Inventory.DefinitionData.ItemDefinition.GetFullDefinitionName()
+                    if any(ele in defName for ele in self.pickups):
                         self.Pickinup = True
                         caller.PickupPickupable(pickup, False)
                         self.Pickinup = False
