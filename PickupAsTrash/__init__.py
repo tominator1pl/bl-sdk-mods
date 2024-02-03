@@ -27,7 +27,7 @@ class MyMod(ModMenu.SDKMod):
     SaveEnabledState: ModMenu.EnabledSaveType = ModMenu.EnabledSaveType.LoadOnMainMenu
     
     iconOverride: InteractionIconWithOverrides
-    Pickup: unrealsdk.UObject
+    Pickup: unrealsdk.UObject = None
     
     def Enable(self) -> None:
         super().Enable()
@@ -57,7 +57,8 @@ class MyMod(ModMenu.SDKMod):
             Template=base_icon,
         )
         unrealsdk.KeepAlive(icon)
-        icon.Icon = EInteractionIcons.INTERACTION_ICON_PickUp
+        #icon.Icon = EInteractionIcons.INTERACTION_ICON_PickUp
+        icon.Icon = EInteractionIcons.INTERACTION_ICON_Shop
 
         PC = unrealsdk.GetEngine().GamePlayers[0].Actor
         #buttons = list(inputDevice.Buttons)
@@ -73,23 +74,36 @@ class MyMod(ModMenu.SDKMod):
 
     @ModMenu.Hook("WillowGame.WillowPlayerController.SawPickupable")
     def onSpawn(self, caller: unrealsdk.UObject, function: unrealsdk.UFunction, params: unrealsdk.FStruct) -> bool:
-        if params.Pickup.ObjectPointer.Inventory.Class != unrealsdk.FindClass("WillowUsableItem"):
-            self.Pickup = params.Pickup.ObjectPointer
-            if self.ShowPopup.CurrentValue:
-                hud_movie = caller.GetHUDMovie()
-                if hud_movie is not None:
-                    hud_movie.ShowToolTip(self.iconOverride, EUsabilityType.UT_Secondary)
+        if params.Pickup.ObjectPointer.bIsMissionItem is False: #Do not show on mission items
+            if params.Pickup.ObjectPointer.Inventory.Class != unrealsdk.FindClass("WillowUsableItem"):
+                self.Pickup = params.Pickup.ObjectPointer
+                if caller.GetPawnInventoryManager().HasRoomInInventoryFor(self.Pickup): #Do not show if inventory is full
+                    if caller.PlayerInput.bUsingGamepad:
+                        self.preventWeaponCycle=True
+                    if self.ShowPopup.CurrentValue:
+                        hud_movie = caller.GetHUDMovie()
+                        if hud_movie is not None:
+                            hud_movie.ShowToolTip(self.iconOverride, EUsabilityType.UT_Secondary)
         return True
 
     @ModMenu.Hook("WillowGame.WillowPlayerController.PerformedSecondaryUseAction")
     def PerformedSecondaryUseAction(self, caller: unrealsdk.UObject, function: unrealsdk.UFunction, params: unrealsdk.FStruct) -> bool:
         item = caller.CurrentSeenPickupable.ObjectPointer
-        if(item == self.Pickup):
+        if(self.Pickup != None and item == self.Pickup):
             item.GetPickupableInventory().Mark = PlayerMark.PM_Trash
             caller.PickupPickupable(item, False)
         return True
     
-            
+    preventWeaponCycle: bool = False    # Prevents NextWeapon() firing since when using a controller, SecondaryUse button is shared with NextWeapon
+
+    @ModMenu.Hook("WillowGame.WillowPlayerController.ClearSeenPickupable")
+    def NotLookingAt(self, caller: unrealsdk.UObject, function: unrealsdk.UFunction, params: unrealsdk.FStruct) -> bool:
+        self.preventWeaponCycle=False
+        return True
+
+    @ModMenu.Hook("WillowGame.WillowPlayerController.NextWeapon")
+    def CycleWeaponHook(self, caller: unrealsdk.UObject, function: unrealsdk.UFunction, params: unrealsdk.FStruct) -> bool:
+        return not self.preventWeaponCycle
             
         
 
