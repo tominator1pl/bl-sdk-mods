@@ -12,7 +12,7 @@ class MyMod(ModMenu.SDKMod):
     SaveEnabledState: ModMenu.EnabledSaveType = ModMenu.EnabledSaveType.LoadOnMainMenu
     
     Pickinup = False
-    pickups = ["GD_Ammodrops.Pickups", "GD_Ammodrops.Pickups_BossOnly", "GD_Currency.A_Item", "GD_BuffDrinks.A_Item"] #Item full definition names to pickup
+    pickups = ["GD_Ammodrops.Pickups", "GD_Ammodrops.Pickups_BossOnly", "GD_Currency.A_Item", "GD_BuffDrinks.A_Item", "GD_Iris_TorgueToken.UsableItems.Pickup_TorgueToken"] #Item full definition names to pickup
     
     def Enable(self) -> None:
         super().Enable()

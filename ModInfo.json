@@ -9,9 +9,9 @@
       "supports": ["BL2", "TPS"],
       "issues": "https://github.com/tominator1pl/bl-sdk-mods/issues",
       "source": "https://github.com/tominator1pl/bl-sdk-mods",
-      "latest": "1.0.2",
+      "latest": "1.0.3",
       "versions": {
-        "1.0.2": "https://github.com/tominator1pl/bl-sdk-mods/raw/main/AutoPickup/AutoPickup.zip"
+        "1.0.3": "https://github.com/tominator1pl/bl-sdk-mods/raw/main/AutoPickup/AutoPickup.zip"
       },
       "license": "MIT"
     },
