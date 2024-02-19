@@ -21,7 +21,7 @@ class MyMod(ModMenu.SDKMod):
     Name: str = "PickupAsTrash"
     Author: str = "Tominator"
     Description: str = "Allows you to pickup items as Trash"
-    Version: str = "1.0.0"
+    Version: str = "1.0.1"
     SupportedGames: ModMenu.Game = ModMenu.Game.BL2 | ModMenu.Game.TPS  # Either BL2 or TPS; bitwise OR'd together
     Types: ModMenu.ModTypes = ModMenu.ModTypes.Utility  # One of Utility, Content, Gameplay, Library; bitwise OR'd together
     SaveEnabledState: ModMenu.EnabledSaveType = ModMenu.EnabledSaveType.LoadOnMainMenu
