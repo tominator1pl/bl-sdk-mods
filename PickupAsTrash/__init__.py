@@ -44,9 +44,21 @@ class MyMod(ModMenu.SDKMod):
             Choices=["No", "Yes"]  # False, True
         )
         
+        self.TrashIcon = ModMenu.Options.Spinner(
+            Caption="Icon",
+            Description="What type of Icon to display next to message.",
+            StartingValue=EInteractionIcons.INTERACTION_ICON_PickUp.name[17:],
+            Choices=[e.name[17:] for e in EInteractionIcons]
+        )
+        
         self.Options = [
             self.ShowPopup,
+            self.TrashIcon
         ]
+        
+    def ModOptionChanged(self, option: ModMenu.Options.Base, new_value) -> None:
+        if option == self.TrashIcon:
+            self.iconOverride.IconDef.Icon = self.TrashIcon.Choices.index(new_value)
 
     def create_Icon(self) -> None:
         base_icon = unrealsdk.FindObject("InteractionIconDefinition", "GD_InteractionIcons.Default.Icon_DefaultUse")
@@ -58,7 +70,7 @@ class MyMod(ModMenu.SDKMod):
         )
         unrealsdk.KeepAlive(icon)
         #icon.Icon = EInteractionIcons.INTERACTION_ICON_PickUp
-        icon.Icon = EInteractionIcons.INTERACTION_ICON_Shop
+        icon.Icon = self.TrashIcon.Choices.index(self.TrashIcon.CurrentValue)
 
         PC = unrealsdk.GetEngine().GamePlayers[0].Actor
         #buttons = list(inputDevice.Buttons)
